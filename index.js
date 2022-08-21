@@ -20,6 +20,7 @@ const run = async () => {
   try {
     // collections
     const coursesCollection = client.db("courseia").collection("courses");
+    const reviewsCollection = client.db("courseia").collection("reviews");
 
     await client.connect();
 
@@ -32,6 +33,11 @@ const run = async () => {
       const id = req.params.id;
       const course = await coursesCollection.findOne({ _id: ObjectId(id) });
       res.send(course);
+    });
+
+    app.get("/reviews", async (req, res) => {
+      const reviews = await reviewsCollection.find({}).toArray();
+      res.send(reviews);
     });
   } catch (error) {
     console.log(error);
