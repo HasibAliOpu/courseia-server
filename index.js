@@ -50,5 +50,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Courseia app listening on PORT ${port}`);
+  console.log(`Courseia web listening on PORT ${port}`);
 });
